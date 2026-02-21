@@ -1,0 +1,8 @@
+torch>=2.2
+torch-geometric>=2.4
+egnn-pytorch>=0.2.1
+pymatgen>=2024.7.18
+torch-scatter>=2.1.2
+tqdm>=4.66
+tensorboard>=2.16
+numpy>=1.26

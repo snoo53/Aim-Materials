@@ -1,4 +1,4 @@
-# AIM Materials (Essential Repo)
+# Aim Materials (Essential Repo)
 
 Minimal, publication-facing subset of the AIM Materials workspace.
 

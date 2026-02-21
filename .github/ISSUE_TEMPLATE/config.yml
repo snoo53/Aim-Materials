@@ -1,6 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Security issue
-    url: https://github.com/<your-username>/aim-materials-github/security/advisories/new
+    url: https://github.com/snoo53/Aim-Materials/security/advisories/new
     about: Report sensitive security vulnerabilities privately
-

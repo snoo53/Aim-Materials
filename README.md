@@ -55,3 +55,18 @@ pip install -r requirements.txt
 - If full reproducibility from raw MP dumps is required, use the original full workspace (not this trimmed repo).
 - QE execution assumes Linux/WSL environment.
 
+## Public Release Files
+
+- License: `LICENSE`
+- Citation metadata: `CITATION.cff`
+- Contributing guide: `CONTRIBUTING.md`
+- Code of conduct: `CODE_OF_CONDUCT.md`
+- Security policy: `SECURITY.md`
+- Release hardening summary: `PUBLIC_RELEASE_NOTES.md`
+
+## Important Post-Push Edits
+
+Update placeholders before sharing publicly:
+
+- `CITATION.cff`: replace `repository-code` and `url`.
+- `.github/ISSUE_TEMPLATE/config.yml`: replace security advisory URL with your actual repository URL.

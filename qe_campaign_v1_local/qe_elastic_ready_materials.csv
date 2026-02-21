@@ -1,0 +1,2 @@
+set,rank_in_set,material_id,reduced_formula,candidate_relpath,status,relax_converged,scf_converged,dft_has_elastic,elastic_points_ok,elastic_fit_rms_gpa,dft_min_eig,dft_B_H,dft_G_H,dft_E_H,dft_nu_H,dft_A_U,final_energy_ev_cell,final_energy_ev_atom,total_force_ry_bohr
+2el,6,gen_00075,Ge3O5,2el/006_gen_00075_Ge3O5,elastic_ready,True,True,True,12,6.2185494680119024,33.58190508007246,130.5726293949647,65.30715729765973,167.92503163357495,0.2856556507903043,1.1802608456422572,-9528.990107278789,-1191.1237634098486,0.138909

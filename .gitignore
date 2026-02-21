@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and runtime
+*.log
+CRASH
+
+# Binary/model artifacts
+*.pt
+*.pth
+
+# Large generated folders (excluded by design)
+generated_cifs_*/
+generated_materials*.json
+predictions/
+runs/
+
+# QE scratch
+qe_campaign_v1_local/*/tmp/
+

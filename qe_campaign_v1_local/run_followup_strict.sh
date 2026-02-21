@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT=/mnt/c/Users/sunwo/Desktop/aim-materials/qe_campaign_v1_local
-REPO=/mnt/c/Users/sunwo/Desktop/aim-materials
-QE_BIN=/home/sunwoo/miniforge3/envs/qe75/bin/pw.x
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="${1:-$SCRIPT_DIR}"
+REPO="${2:-$(cd "$ROOT/.." && pwd)}"
+QE_BIN="${3:-${QE_BIN:-pw.x}}"
+NPROC="${4:-1}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 cd "$ROOT"
 ts=$(date +%Y%m%d_%H%M%S)
@@ -18,11 +21,11 @@ export MKL_NUM_THREADS=1
 export QE_TIMEOUT_SEC=21600
 
 echo "[STEP] long-timeout elastic rerun"
-bash run_elastic.sh "$QE_BIN" 1 scf_passed.txt
+bash run_elastic.sh "$QE_BIN" "$NPROC" scf_passed.txt
 
 cd "$REPO"
 echo "[STEP] analyze strict latest"
-python analyze_qe_campaign_results.py \
+"$PYTHON_BIN" analyze_qe_campaign_results.py \
   --campaign_manifest qe_campaign_v1_local/campaign_manifest.csv \
   --out_csv qe_campaign_v1_local/analysis_strict_latest.csv \
   --out_summary_json qe_campaign_v1_local/analysis_strict_latest_summary.json \
@@ -44,7 +47,7 @@ export RELAX_RESCUE_ELECTRON_MAXSTEP=300
 export RELAX_RESCUE_MIXING_BETA=0.20
 
 echo "[STEP] next strict relax batch"
-bash run_relax.sh "$QE_BIN" 1 candidate_paths_next_strict_batch.txt
+bash run_relax.sh "$QE_BIN" "$NPROC" candidate_paths_next_strict_batch.txt
 
 cat "relax_failed.txt.before_nextbatch_${ts}" relax_failed.txt 2>/dev/null | sed '/^$/d' > relax_failed_merged_latest.txt || true
 cat "relax_passed.txt.before_nextbatch_${ts}" relax_passed.txt 2>/dev/null | sed '/^$/d' | sort -u > relax_passed_merged_latest.txt || true

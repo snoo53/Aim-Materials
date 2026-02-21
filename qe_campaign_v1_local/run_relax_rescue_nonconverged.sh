@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="${1:-$PWD}"
-QE_BIN="${2:-/home/sunwoo/miniforge3/envs/qe75/bin/pw.x}"
+QE_BIN="${2:-${QE_BIN:-pw.x}}"
 NPROC="${3:-1}"
 FAILED_FILE="${4:-$ROOT/relax_failed.txt}"
 INPUT_LIST="${5:-$ROOT/candidate_paths_relax_nonconverged_retry.txt}"

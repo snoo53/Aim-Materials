@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="${1:-/mnt/c/Users/sunwo/Desktop/aim-materials/qe_campaign_v1_local}"
-QE_BIN="${2:-/home/sunwoo/miniforge3/envs/qe75/bin/pw.x}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="${1:-$SCRIPT_DIR}"
+QE_BIN="${2:-${QE_BIN:-pw.x}}"
 NPROC="${3:-1}"
 QE_SCF_TIMEOUT_SEC="${QE_SCF_TIMEOUT_SEC:-21600}"
 QE_ELASTIC_TIMEOUT_SEC="${QE_ELASTIC_TIMEOUT_SEC:-21600}"
@@ -62,4 +63,3 @@ fi
 
 echo "[DONE] post-rescue pipeline complete"
 echo "[INFO] relax_merged=$(wc -l < relax_passed_merged_latest.txt) scf_merged=$(wc -l < scf_passed_merged_latest.txt) elastic_merged=$(wc -l < elastic_passed_merged_latest.txt)"
-

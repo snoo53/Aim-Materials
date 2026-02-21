@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="${1:-/mnt/c/Users/sunwo/Desktop/aim-materials/qe_campaign_v1_local}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="${1:-$SCRIPT_DIR}"
 cd "$ROOT"
 
 echo "=== now ==="

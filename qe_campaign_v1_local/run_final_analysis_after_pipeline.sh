@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="${1:-/mnt/c/Users/sunwo/Desktop/aim-materials/qe_campaign_v1_local}"
-REPO="${2:-/mnt/c/Users/sunwo/Desktop/aim-materials}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="${1:-$SCRIPT_DIR}"
+REPO="${2:-$(cd "$ROOT/.." && pwd)}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 ts="$(date +%Y%m%d_%H%M%S)"
 
 cd "$ROOT"
@@ -12,7 +14,7 @@ echo "[INFO] final-analysis start ts=$ts"
 
 cd "$REPO"
 if [[ -f "analyze_qe_campaign_results.py" ]]; then
-  python analyze_qe_campaign_results.py \
+  "$PYTHON_BIN" analyze_qe_campaign_results.py \
     --campaign_manifest qe_campaign_v1_local/campaign_manifest.csv \
     --out_csv "qe_campaign_v1_local/analysis_strict_latest_${ts}.csv" \
     --out_summary_json "qe_campaign_v1_local/analysis_strict_latest_summary_${ts}.json" \
@@ -88,4 +90,3 @@ print(f"[INFO] candidates={len(rows)}")
 PY
 
 echo "[DONE] final-analysis finished ts=$ts"
-

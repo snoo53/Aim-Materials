@@ -100,47 +100,49 @@ def main() -> int:
     row = _pick_row(rows, args.material_id or None)
     q = row.get("qe_validation") or {}
 
+    # MPContribs labels/keys are strict; avoid underscores/special chars in data keys.
     data = {
-        "formula_pretty": row.get("formula_pretty"),
+        "formula": row.get("formula_pretty"),
         "chemsys": row.get("chemsys"),
         "nelements": row.get("nelements"),
         "density": row.get("density"),
         "qe": {
             "status": q.get("status"),
-            "candidate_relpath": q.get("candidate_relpath"),
-            "relax_converged": q.get("relax_converged"),
-            "scf_converged": q.get("scf_converged"),
-            "elastic_points_ok": q.get("elastic_points_ok"),
-            "elastic_fit_rms_gpa": q.get("elastic_fit_rms_gpa"),
-            "dft_B_H": q.get("dft_B_H"),
-            "dft_G_H": q.get("dft_G_H"),
-            "dft_E_H": q.get("dft_E_H"),
-            "dft_nu_H": q.get("dft_nu_H"),
-            "dft_A_U": q.get("dft_A_U"),
-            "final_energy_ev_atom": q.get("final_energy_ev_atom"),
-            "total_force_ry_bohr": q.get("total_force_ry_bohr"),
+            "candidatepath": q.get("candidate_relpath"),
+            "relaxconverged": q.get("relax_converged"),
+            "scfconverged": q.get("scf_converged"),
+            "elasticpointsok": q.get("elastic_points_ok"),
+            "elasticfitrmsgpa": q.get("elastic_fit_rms_gpa"),
+            "dftbh": q.get("dft_B_H"),
+            "dftgh": q.get("dft_G_H"),
+            "dfteh": q.get("dft_E_H"),
+            "dftnu": q.get("dft_nu_H"),
+            "dftau": q.get("dft_A_U"),
+            "finalenergyevatom": q.get("final_energy_ev_atom"),
+            "totalforcerybohr": q.get("total_force_ry_bohr"),
         },
     }
     data = _clean_none(data)
 
+    # Keep units unset for robust first uploads; units can be added later after schema stabilizes.
     columns = {
-        "formula_pretty": None,
+        "formula": None,
         "chemsys": None,
         "nelements": None,
         "density": None,
         "qe.status": None,
-        "qe.candidate_relpath": None,
-        "qe.relax_converged": None,
-        "qe.scf_converged": None,
-        "qe.elastic_points_ok": None,
-        "qe.elastic_fit_rms_gpa": "GPa",
-        "qe.dft_B_H": "GPa",
-        "qe.dft_G_H": "GPa",
-        "qe.dft_E_H": "GPa",
-        "qe.dft_nu_H": None,
-        "qe.dft_A_U": None,
-        "qe.final_energy_ev_atom": "eV/atom",
-        "qe.total_force_ry_bohr": "Ry/bohr",
+        "qe.candidatepath": None,
+        "qe.relaxconverged": None,
+        "qe.scfconverged": None,
+        "qe.elasticpointsok": None,
+        "qe.elasticfitrmsgpa": None,
+        "qe.dftbh": None,
+        "qe.dftgh": None,
+        "qe.dfteh": None,
+        "qe.dftnu": None,
+        "qe.dftau": None,
+        "qe.finalenergyevatom": None,
+        "qe.totalforcerybohr": None,
     }
 
     contribution: Dict[str, Any] = {
@@ -185,4 +187,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -1,6 +1,6 @@
-# AIM Materials (Essential Repo)
+# Aim Materials (Essential Repo)
 
-Minimal, publication-facing subset of the AIM Materials workspace.
+Minimal, publication-facing subset of the Aim Materials workspace.
 
 This repository contains only the core code and compact result artifacts needed to:
 

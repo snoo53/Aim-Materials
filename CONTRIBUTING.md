@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to AIM Materials.
+Thanks for contributing to Aim Materials.
 
 ## Scope
 
@@ -42,4 +42,3 @@ bash -n qe_campaign_v1_local/*.sh
 - Keep PRs small and single-purpose.
 - Include rationale and expected behavior changes.
 - Do not commit secrets, machine-specific absolute paths, or large local artifacts.
-

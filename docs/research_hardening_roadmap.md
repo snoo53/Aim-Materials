@@ -1,4 +1,4 @@
-# AIM Materials: Reliability-to-Publishability Roadmap
+# Aim Materials: Reliability-to-Publishability Roadmap
 
 ## 0) Immediate fixes (implemented in this sprint)
 - Wire `target_num_elements` from dataset -> batch -> model forward.
